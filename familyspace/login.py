@@ -17,6 +17,7 @@ class Login(QtWidgets.QDialog):
         layout.addWidget(self.textName)
         layout.addWidget(self.textPass)
         layout.addWidget(self.buttonLogin)
+        self.textPass.setEchoMode(QtWidgets.QLineEdit.Password)
 
     def handleLogin(self):
         user = self.textName.text()
