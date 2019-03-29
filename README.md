@@ -6,7 +6,7 @@ QFamilySpace is a cross-platform UI client for [familyspace](https://github.com/
 ## Running from sources
 To run the application without installing just:
 
-* Download [latest code archive](https://github.com/familyspace/qfamilyspace/archive/master.zip)
+* Download [latest code archive](https://github.com/familyspace/qfamilyspace/archive/test.zip)
 * Run:
   * On Linux: bin/qfamilyspace
   * On Windows: bin\qfamilyspace.pyw
