@@ -26,6 +26,6 @@ if sys.argv[0].lower().endswith('.exe'):
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from familyspace import familyspace
+from qfamilyspace import qfamilyspace
 
-familyspace.run()
+qfamilyspace.run()

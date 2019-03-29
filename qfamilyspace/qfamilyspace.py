@@ -3,8 +3,8 @@
 
 import sys
 from PyQt5 import QtWidgets
-from familyspace.ui.ui_mainwindow import Ui_MainWindow
-from familyspace.login import Login
+from qfamilyspace.ui.ui_mainwindow import Ui_MainWindow
+from qfamilyspace.login import Login
 
 NEED_LOGIN = True
 
