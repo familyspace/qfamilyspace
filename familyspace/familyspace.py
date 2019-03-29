@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import sys
 from PyQt5 import QtWidgets
 from familyspace.ui.ui_mainwindow import Ui_MainWindow
