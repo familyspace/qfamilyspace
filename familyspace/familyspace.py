@@ -1,7 +1,7 @@
 import sys
 from PyQt5 import QtWidgets
-from ui.ui_mainwindow import Ui_MainWindow
-from login import Login
+from familyspace.ui.ui_mainwindow import Ui_MainWindow
+from familyspace.login import Login
 
 NEED_LOGIN = True
 
@@ -13,7 +13,7 @@ class Window(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
 
-if __name__ == '__main__':
+def run():
     app = QtWidgets.QApplication(sys.argv)
     login = Login()
 
@@ -21,3 +21,7 @@ if __name__ == '__main__':
         window = Window()
         window.show()
         sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    run()
