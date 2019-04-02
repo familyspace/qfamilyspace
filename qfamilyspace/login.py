@@ -42,12 +42,15 @@ class Login(QtWidgets.QDialog):
             "password": password_sha256,
         }
 
-        response = requests.post("http://localhost:8000/apiauth/signin/", headers=headers, json=payload)
-
-        if response.status_code == 200:
-            self.accept()
+        try:
+            response = requests.post("http://localhost:8000/apiauth/signin/", headers=headers, json=payload)
+        except requests.exceptions.ConnectionError as e:
+            print(f"ConnectionError: {e}")
         else:
-            QtWidgets.QMessageBox.warning(self, "Error", str(response.json()["error"]["message"]))
+            if response.status_code == 200:
+                self.accept()
+            else:
+                QtWidgets.QMessageBox.warning(self, "Error", str(response.json()["error"]["message"]))
 
     def handleSignup(self):
 
@@ -62,9 +65,12 @@ class Login(QtWidgets.QDialog):
             "password": password_sha256,
         }
 
-        response = requests.post("http://localhost:8000/apiauth/signup/", headers=headers, json=payload)
-
-        if response.status_code == 200:
-            QtWidgets.QMessageBox.warning(self, "Registration", "Registration is complete")
+        try:
+            response = requests.post("http://localhost:8000/apiauth/signup/", headers=headers, json=payload)
+        except requests.exceptions.ConnectionError as e:
+            print(f"ConnectionError: {e}")
         else:
-            QtWidgets.QMessageBox.warning(self, "Error", str(response.json()["error"]["message"]))
+            if response.status_code == 200:
+                QtWidgets.QMessageBox.warning(self, "Registration", "Registration is complete")
+            else:
+                QtWidgets.QMessageBox.warning(self, "Error", str(response.json()["error"]["message"]))
