@@ -12,10 +12,11 @@ NEED_LOGIN = True
 
 class Window(QtWidgets.QMainWindow):
     def __init__(self, iniFile, parent=None):
-        super(Window, self).__init__(parent)
+        QtWidgets.QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
-
         self.ui.setupUi(self)
+        # self.ui.__init__(self)
+
         self.iniFile = iniFile
         self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
         self.settings.setIniCodec("utf-8")

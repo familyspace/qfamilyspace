@@ -1,27 +1,34 @@
-import sys
+# -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore, QtWidgets
+# Form implementation generated from reading ui file 'mainwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
-class UiMainWindow(QtWidgets.QWidget):
-    def __init__(self, parent=None):
-        QtWidgets.QWidget.__init__(self, parent)
-        self.label = QtWidgets.QLabel('<center><b><h2>Здравствуйте, User</h2></b></center>')
-        self.profile = QtWidgets.QToolBox()
-        self.profile.addItem(QtWidgets.QPushButton('Редактировать'), '&Профиль')
-        self.profile.addItem(QtWidgets.QPushButton('Редактировать'), '&Ваши группы')
-        self.profile.setCurrentIndex(0)
-        self.logOffButton = QtWidgets.QPushButton('Выйти')
-        self.logOffButton.setStyleSheet('QPushButton {background-color: red; font-weight: bold; font-size: 11pt}')
-        self.contactSearchButton = QtWidgets.QPushButton('Поиск контактов')
-        self.groupSearchButton = QtWidgets.QPushButton('Поиск группы')
-        self.groupCreateButton = QtWidgets.QPushButton('Создать группу')
-        self.vbox = QtWidgets.QVBoxLayout()
-        self.vbox.addWidget(self.label)
-        self.vbox.addWidget(self.profile)
-        self.vbox.addWidget(self.contactSearchButton)
-        self.vbox.addWidget(self.groupSearchButton)
-        self.vbox.addWidget(self.groupCreateButton)
-        self.vbox.addWidget(self.logOffButton)
-        self.setLayout(self.vbox)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "FamilySpace"))
+
+
