@@ -3,39 +3,42 @@
 
 import sys
 from PyQt5 import QtWidgets, QtCore
-from ui.ui_mainwindow import Ui_MainWindow
-from login import Login
-from profile import Profile
+# from ui.ui_mainwindow import Ui_MainWindow
+# from login import Login
+# from profile import Profile
+
+from qfamilyspace.ui.views.main_view import MainView
+from qfamilyspace.libs.login import Login
 
 NEED_LOGIN = True
 
 
-class Window(QtWidgets.QMainWindow):
-    def __init__(self, iniFile, parent=None):
-        QtWidgets.QMainWindow.__init__(self, parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        # self.ui.__init__(self)
-
-        self.iniFile = iniFile
-        self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
-        self.settings.setIniCodec("utf-8")
-
-        self.user = {"token": ""}
-
-        # Чтение настроек
-        self.read_settings()
-
-        profile = Profile(self.user["token"])
-        profile.handle_get()
-        profile.handle_put_profile()
-        profile.handle_patch_profile()
-
-    def read_settings(self):
-        """Чтение настроек"""
-        self.settings.beginGroup("User")
-        self.user["token"] = self.settings.value("token")
-        self.settings.endGroup()
+# class Window(QtWidgets.QMainWindow):
+#     def __init__(self, iniFile, parent=None):
+#         QtWidgets.QMainWindow.__init__(self, parent)
+#         self.ui = Ui_MainWindow()
+#         self.ui.setupUi(self)
+#         # self.ui.__init__(self)
+#
+#         self.iniFile = iniFile
+#         self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
+#         self.settings.setIniCodec("utf-8")
+#
+#         self.user = {"token": ""}
+#
+#         # Чтение настроек
+#         self.read_settings()
+#
+#         profile = Profile(self.user["token"])
+#         profile.handle_get()
+#         profile.handle_put_profile()
+#         profile.handle_patch_profile()
+#
+#     def read_settings(self):
+#         """Чтение настроек"""
+#         self.settings.beginGroup("User")
+#         self.user["token"] = self.settings.value("token")
+#         self.settings.endGroup()
 
 
 def run():
@@ -43,7 +46,8 @@ def run():
     login = Login("settings.ini")
 
     if not NEED_LOGIN or (NEED_LOGIN and login.exec_() == QtWidgets.QDialog.Accepted):
-        window = Window("settings.ini")
+        # window = Window("settings.ini")
+        window = MainView()
         window.show()
         sys.exit(app.exec_())
 
