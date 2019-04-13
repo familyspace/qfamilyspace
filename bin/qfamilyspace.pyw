@@ -11,7 +11,7 @@ except NameError:
 
 
 def reroute_py2exe_logs():
-    appdata = os.path.expandvars("%AppData%\\qfamilyspace")
+    appdata = os.path.expandvars("%AppData%\\QFamilySpaceTxt")
     if not os.path.isdir(appdata):
         os.makedirs(appdata)
     sys.stdout = open(appdata + "\\stdout.log", "w")
@@ -26,6 +26,6 @@ if sys.argv[0].lower().endswith('.exe'):
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from qfamilyspace import qfamilyspace
+from qfamilyspace import app
 
-qfamilyspace.run()
+app.run()
