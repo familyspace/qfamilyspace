@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 
 
-class Ui_MainWindow(QtWidgets.QWidget):
+class LeftView(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.label = QtWidgets.QLabel('<center><b><h2>Здравствуйте, User</h2></b></center>')

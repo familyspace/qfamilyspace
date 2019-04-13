@@ -1,1 +1,0 @@
-%~dp0..\..\venv\Scripts\pyuic5.exe authdialog.ui -o ui_authdialog.py

@@ -1,1 +1,0 @@
-%~dp0..\..\venv\Scripts\pyuic5.exe mainwindow.ui -o ui_mainwindow.py
