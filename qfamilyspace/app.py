@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import qdarkstyle
 from PyQt5 import QtWidgets
 
 from qfamilyspace.ui.views.main_view import MainView
@@ -13,8 +14,15 @@ def run():
 
     auth = Auth("settings.ini")
 
+    # setup stylesheet
+    auth.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
     if auth.exec_() == QtWidgets.QDialog.Accepted:
         window = MainView()
+
+        # setup stylesheet
+        app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
         window.show()
         sys.exit(app.exec_())
 
