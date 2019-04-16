@@ -21,6 +21,7 @@ class MainView(QtWidgets.QMainWindow):
         super(MainView, self).hide()
 
     def _initUI(self):
+        self.setWindowTitle("QFamilySpace")
 
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setHandleWidth(1)
