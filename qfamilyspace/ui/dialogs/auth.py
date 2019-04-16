@@ -110,7 +110,7 @@ class Auth(QtWidgets.QDialog):
         }
 
         try:
-            response = requests.post("http://localhost:8000/authapi/signin/", headers=headers, json=payload)
+            response = requests.post("http://localhost:8000/auth_api/signin/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
@@ -142,7 +142,7 @@ class Auth(QtWidgets.QDialog):
         }
 
         try:
-            response = requests.post("http://localhost:8000/authapi/signup/", headers=headers, json=payload)
+            response = requests.post("http://localhost:8000/auth_api/signup/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
