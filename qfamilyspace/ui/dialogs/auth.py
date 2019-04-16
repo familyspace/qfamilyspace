@@ -1,4 +1,4 @@
-import hashlib
+# import hashlib
 import requests
 
 from PyQt5 import QtWidgets, QtCore
@@ -6,11 +6,11 @@ from PyQt5 import QtWidgets, QtCore
 from qfamilyspace.ui.dialogs.ui_auth import Ui_AuthDialog
 
 
-def hash_string(string):
-    """
-    Return a SHA-256 hash of the given string
-    """
-    return hashlib.sha256(string.encode('utf-8')).hexdigest()
+# def hash_string(string):
+#     """
+#     Return a SHA-256 hash of the given string
+#     """
+#     return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
 
 class Auth(QtWidgets.QDialog):
@@ -28,9 +28,9 @@ class Auth(QtWidgets.QDialog):
         self.ui.lineEditPasswordSignup.setEchoMode(QtWidgets.QLineEdit.Password)
         self.ui.lineEditPasswordSignupRepeat.setEchoMode(QtWidgets.QLineEdit.Password)
 
-        self.user = {"pass_is_sha256": False}
+        # self.user = {"pass_is_sha256": False}
 
-        self.ui.lineEditPassword.textEdited.connect(self.change_pass_status)
+        # self.ui.lineEditPassword.textEdited.connect(self.change_pass_status)
         self.ui.checkBoxShowPassword.stateChanged.connect(self.change_pass_visibility)
         self.ui.checkBoxShowPassworsSignup.stateChanged.connect(self.change_pass_signup_visibility)
 
@@ -40,8 +40,8 @@ class Auth(QtWidgets.QDialog):
         # Чтение настроек
         self.read_settings()
 
-    def change_pass_status(self):
-        self.user["pass_is_sha256"] = False
+    # def change_pass_status(self):
+    #     self.user["pass_is_sha256"] = False
 
     def change_pass_visibility(self):
         """"Изменение режима отображения пароля в закладке Войти"""
@@ -66,7 +66,7 @@ class Auth(QtWidgets.QDialog):
         self.ui.lineEditLogin.setText(self.settings.value("login"))
         self.ui.lineEditPassword.setText(self.settings.value("password"))
         self.ui.checkBoxSavePassword.setChecked(self.settings.value("save_password", False, type=bool))
-        self.user["pass_is_sha256"] = True
+        # self.user["pass_is_sha256"] = True
 
         self.settings.endGroup()
 
@@ -79,10 +79,11 @@ class Auth(QtWidgets.QDialog):
         self.settings.setValue('token', token)
         if self.ui.checkBoxSavePassword.checkState():
             self.settings.setValue('login', self.ui.lineEditLogin.text())
-            if self.user["pass_is_sha256"]:
-                self.settings.setValue('password', self.ui.lineEditPassword.text())
-            else:
-                self.settings.setValue('password', hash_string(self.ui.lineEditPassword.text()))
+            # if self.user["pass_is_sha256"]:
+            #     self.settings.setValue('password', self.ui.lineEditPassword.text())
+            # else:
+            #     self.settings.setValue('password', hash_string(self.ui.lineEditPassword.text()))
+            self.settings.setValue('password', self.ui.lineEditPassword.text())
         else:
             self.settings.setValue('login', "")
             self.settings.setValue('password', "")
@@ -93,21 +94,23 @@ class Auth(QtWidgets.QDialog):
 
         user = self.ui.lineEditLogin.text()
 
-        if self.user["pass_is_sha256"]:
-            password_sha256 = self.ui.lineEditPassword.text()
-        else:
-            password_sha256 = hash_string(self.ui.lineEditPassword.text())
+        # if self.user["pass_is_sha256"]:
+        #     password_sha256 = self.ui.lineEditPassword.text()
+        # else:
+        #     password_sha256 = hash_string(self.ui.lineEditPassword.text())
+        password = self.ui.lineEditPassword.text()
 
         token = ""
 
         headers = {"Accept": "application/json"}
         payload = {
             "login": user,
-            "password": password_sha256,
+            # "password": password_sha256,
+            "password": password,
         }
 
         try:
-            response = requests.post("http://localhost:8000/api/auth/signin/", headers=headers, json=payload)
+            response = requests.post("http://localhost:8000/authapi/signin/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
@@ -129,16 +132,17 @@ class Auth(QtWidgets.QDialog):
         user = self.ui.lineEditLoginSignup.text()
         password = self.ui.lineEditPasswordSignup.text()
 
-        password_sha256 = hash_string(password)
+        # password_sha256 = hash_string(password)
 
         headers = {"Accept": "application/json"}
         payload = {
             "login": user,
-            "password": password_sha256,
+            # "password": password_sha256,
+            "password": password,
         }
 
         try:
-            response = requests.post("http://localhost:8000/api/auth/signup/", headers=headers, json=payload)
+            response = requests.post("http://localhost:8000/authapi/signup/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
