@@ -9,7 +9,7 @@ class Profile:
         self.token = token
         self.user_id = None
 
-    def handle_get(self):
+    def handle_get_profile(self):
 
         headers = {
             "Accept": "application/json",
@@ -18,14 +18,15 @@ class Profile:
         payload = {}
 
         try:
-            response = requests.get("http://localhost:8000/api/profile/", headers=headers, json=payload)
+            response = requests.get("http://localhost:8000/user_api/profile/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
             if "response" in response.json():
-                print(response.json()["response"])
+                # print(response.json()["response"])
                 self.user_id = response.json()["response"][0]["id"]
-                print(self.user_id)
+                # print(self.user_id)
+        return response.json()["response"][0]
 
     def handle_put_profile(self):
 
@@ -39,7 +40,7 @@ class Profile:
         }
 
         try:
-            response = requests.put(f"http://localhost:8000/api/profile/{self.user_id}/", headers=headers, json=payload)
+            response = requests.put(f"http://localhost:8000/user_api/profile/{self.user_id}/", headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
@@ -55,7 +56,7 @@ class Profile:
         payload = {}
 
         try:
-            response = requests.patch(f"http://localhost:8000/api/profile/{self.user_id}/",
+            response = requests.patch(f"http://localhost:8000/user_api/profile/{self.user_id}/",
                                       headers=headers, json=payload)
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
