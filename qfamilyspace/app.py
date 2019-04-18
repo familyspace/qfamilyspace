@@ -5,17 +5,27 @@ import sys
 import qdarkstyle
 from PyQt5 import QtWidgets
 
+from qfamilyspace.ui.controllers.main_controller import MainController
 from qfamilyspace.ui.views.main_view import MainView
-from qfamilyspace.ui.dialogs.auth import Auth
+from qfamilyspace.ui.dialogs.auth_dialog import Auth
 
 # from PyQt5.QtCore import QFile, QTextStream
 # import qfamilyspace.ui.resources.breeze_resources
+
+
+def _create_controller():
+    window = MainView()
+    # dialogs = Dialogs(window, 'QFamilySpace')
+    # return MainController(window, dialogs)
+    return MainController(window)
 
 
 def run():
     app = QtWidgets.QApplication(sys.argv)
 
     auth = Auth("settings.ini")
+
+    controller = _create_controller()
 
     # # set stylesheet
     # file = QFile(":/dark.qss")
@@ -32,8 +42,7 @@ def run():
     app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     if auth.exec_() == QtWidgets.QDialog.Accepted:
-        window = MainView()
-        window.show()
+        controller.show()
         sys.exit(app.exec_())
 
 
