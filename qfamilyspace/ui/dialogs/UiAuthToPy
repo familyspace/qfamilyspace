@@ -1,1 +1,1 @@
-../../../venv/bin/pyuic5 auth.ui -o ui_auth.py
+../../../venv/bin/pyuic5 auth_dialog.ui -o ui_auth_dialog.py

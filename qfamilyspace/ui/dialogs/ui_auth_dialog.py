@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'auth.ui'
+# Form implementation generated from reading ui file 'auth_dialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -85,7 +85,7 @@ class Ui_AuthDialog(object):
         self.labelPhone.setObjectName("labelPhone")
         self.gridLayout.addWidget(self.labelPhone, 4, 0, 1, 1)
         self.lineEditPasswordSignup = QtWidgets.QLineEdit(self.tab_2)
-        self.lineEditPasswordSignup.setClearButtonEnabled(False)
+        self.lineEditPasswordSignup.setProperty("clearButtonEnabled", False)
         self.lineEditPasswordSignup.setObjectName("lineEditPasswordSignup")
         self.gridLayout.addWidget(self.lineEditPasswordSignup, 1, 1, 1, 1)
         self.lineEditPasswordSignupRepeat = QtWidgets.QLineEdit(self.tab_2)

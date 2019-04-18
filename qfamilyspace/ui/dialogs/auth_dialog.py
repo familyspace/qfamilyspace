@@ -3,7 +3,7 @@ import requests
 
 from PyQt5 import QtWidgets, QtCore
 
-from qfamilyspace.ui.dialogs.ui_auth import Ui_AuthDialog
+from qfamilyspace.ui.dialogs.ui_auth_dialog import Ui_AuthDialog
 
 
 # def hash_string(string):
@@ -17,12 +17,12 @@ class Auth(QtWidgets.QDialog):
     def __init__(self, iniFile, parent=None):
         super(Auth, self).__init__(parent)
 
+        self.ui = Ui_AuthDialog()
+        self.ui.setupUi(self)
+
         self.iniFile = iniFile
         self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
         self.settings.setIniCodec("utf-8")
-
-        self.ui = Ui_AuthDialog()
-        self.ui.setupUi(self)
 
         self.ui.lineEditPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.ui.lineEditPasswordSignup.setEchoMode(QtWidgets.QLineEdit.Password)

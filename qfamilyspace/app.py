@@ -7,7 +7,7 @@ from PyQt5 import QtWidgets
 
 from qfamilyspace.ui.controllers.main_controller import MainController
 from qfamilyspace.ui.views.main_view import MainView
-from qfamilyspace.ui.dialogs.auth import Auth
+from qfamilyspace.ui.dialogs.auth_dialog import Auth
 
 # from PyQt5.QtCore import QFile, QTextStream
 # import qfamilyspace.ui.resources.breeze_resources
