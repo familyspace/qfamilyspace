@@ -12,8 +12,6 @@ from qfamilyspace.ui.dialogs.auth_dialog import Auth
 # from PyQt5.QtCore import QFile, QTextStream
 # import qfamilyspace.ui.resources.breeze_resources
 
-from qfamilyspace.libs.profile import Profile
-
 
 def _create_controller():
     window = MainView()
@@ -43,15 +41,8 @@ def run():
     auth.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
-    # profile = Profile("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNiwiZXhwIjoxNTg3MDIzNTE3fQ.f5DvF7WOp6p56xfK-gaeaTX748D5PYmDLuy_jvClejw")
-    # profile.handle_get_profile()
-
     if auth.exec_() == QtWidgets.QDialog.Accepted:
-        # window = MainView()
-        # window.show()
-
         controller.show()
-
         sys.exit(app.exec_())
 
 
