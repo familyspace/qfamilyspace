@@ -48,7 +48,7 @@ class Profile:
             return response
         return None
 
-    def handle_patch_profile(self):
+    def handle_patch_profile(self, payload: dict):
 
         headers = {
             "Accept": "application/json",
@@ -62,9 +62,5 @@ class Profile:
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
-            # print(response.status_code)
-            # print(response.json())
-            # if "response" in response.json():
-            #     return response.json()["response"][0]
             return response
         return None

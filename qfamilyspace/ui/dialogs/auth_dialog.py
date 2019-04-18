@@ -13,9 +13,9 @@ from qfamilyspace.ui.dialogs.ui_auth_dialog import Ui_AuthDialog
 #     return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
 
-class Auth(QtWidgets.QDialog):
+class AuthDialog(QtWidgets.QDialog):
     def __init__(self, iniFile, parent=None):
-        super(Auth, self).__init__(parent)
+        super(AuthDialog, self).__init__(parent)
 
         self.ui = Ui_AuthDialog()
         self.ui.setupUi(self)
