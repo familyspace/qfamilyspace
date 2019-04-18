@@ -8,27 +8,13 @@ class ProfileView(QtWidgets.QWidget):
 
     save_profile_signal = pyqtSignal(dict)
 
-    def __init__(self, iniFile, parent=None):
+    def __init__(self, parent=None):
         super(ProfileView, self).__init__(parent)
 
         self.ui = Ui_ProfileView()
         self.ui.setupUi(self)
 
-        self.iniFile = iniFile
-        self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
-        self.settings.setIniCodec("utf-8")
-
-        self.token = ""
-
-        self.read_settings()  # Чтение настроек
-
         self.ui.pushButton_save_profile.clicked.connect(self.save_profile)
-
-    def read_settings(self):
-        """Чтение настроек"""
-        self.settings.beginGroup("User")
-        self.token = self.settings.value("token")
-        self.settings.endGroup()
 
     def fill_profile(self, profile_data):
         # print(profile_data)
