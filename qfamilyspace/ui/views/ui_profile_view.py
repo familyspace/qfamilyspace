@@ -60,6 +60,7 @@ class Ui_ProfileView(object):
         self.label_phone.setObjectName("label_phone")
         self.gridLayout.addWidget(self.label_phone, 6, 0, 1, 1)
         self.dateEdit_birth_date = QtWidgets.QDateEdit(self.groupBoxProfile)
+        self.dateEdit_birth_date.setCalendarPopup(True)
         self.dateEdit_birth_date.setObjectName("dateEdit_birth_date")
         self.gridLayout.addWidget(self.dateEdit_birth_date, 8, 2, 1, 1)
         self.label_gender = QtWidgets.QLabel(self.groupBoxProfile)
@@ -87,6 +88,14 @@ class Ui_ProfileView(object):
 
         self.retranslateUi(ProfileView)
         QtCore.QMetaObject.connectSlotsByName(ProfileView)
+        ProfileView.setTabOrder(self.lineEdit_user, self.lineEdit_first_name)
+        ProfileView.setTabOrder(self.lineEdit_first_name, self.lineEdit_last_name)
+        ProfileView.setTabOrder(self.lineEdit_last_name, self.lineEdit_middle_name)
+        ProfileView.setTabOrder(self.lineEdit_middle_name, self.lineEdit_phone)
+        ProfileView.setTabOrder(self.lineEdit_phone, self.radioButton_man)
+        ProfileView.setTabOrder(self.radioButton_man, self.radioButton_woman)
+        ProfileView.setTabOrder(self.radioButton_woman, self.dateEdit_birth_date)
+        ProfileView.setTabOrder(self.dateEdit_birth_date, self.pushButton_save_profile)
 
     def retranslateUi(self, ProfileView):
         _translate = QtCore.QCoreApplication.translate
@@ -103,6 +112,7 @@ class Ui_ProfileView(object):
         self.label_user.setText(_translate("ProfileView", "Логин"))
         self.label_phone.setText(_translate("ProfileView", "Телефон"))
         self.dateEdit_birth_date.setToolTip(_translate("ProfileView", "Введите дату вашего рождения"))
+        self.dateEdit_birth_date.setDisplayFormat(_translate("ProfileView", "dd.MM.yyyy"))
         self.label_gender.setText(_translate("ProfileView", "Пол"))
         self.label_birth_date.setText(_translate("ProfileView", "Дата рождения"))
         self.lineEdit_middle_name.setToolTip(_translate("ProfileView", "Введите ваше отчество"))

@@ -126,6 +126,12 @@
           <property name="toolTip">
            <string>Введите дату вашего рождения</string>
           </property>
+          <property name="displayFormat">
+           <string>dd.MM.yyyy</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="7" column="0">
@@ -186,6 +192,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_user</tabstop>
+  <tabstop>lineEdit_first_name</tabstop>
+  <tabstop>lineEdit_last_name</tabstop>
+  <tabstop>lineEdit_middle_name</tabstop>
+  <tabstop>lineEdit_phone</tabstop>
+  <tabstop>radioButton_man</tabstop>
+  <tabstop>radioButton_woman</tabstop>
+  <tabstop>dateEdit_birth_date</tabstop>
+  <tabstop>pushButton_save_profile</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

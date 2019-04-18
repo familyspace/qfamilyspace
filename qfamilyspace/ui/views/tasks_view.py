@@ -13,7 +13,7 @@ class TasksView(QtWidgets.QWidget):
         layout = QtWidgets.QVBoxLayout(self)
         layout.setSpacing(10)
 
-        self.profile_view = ProfileView(self)
+        self.profile_view = ProfileView("settings.ini")
 
         # offset = QtCore.QSettings().value("ui_margin_offset", -4)
         # self.setContentsMargins(2 * offset, offset, offset, offset)
