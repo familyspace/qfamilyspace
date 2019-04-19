@@ -39,10 +39,12 @@ class ProfileController(QtCore.QObject):
     def put_profile_data(self, profile_data):
         response = self.profile.handle_put_profile(profile_data)
         if response.status_code == 200:
-            print("Профиль сохранён успешно")
+            msg = "Профиль сохранён успешно"
+            # msg = "The profile is saved successfully"
+            print(msg)
 
     # def patch_profile_data(self, profile_data):
     #     response = self.profile.handle_patch_profile(profile_data)
     #     if response.status_code == 200:
     #         print("Профиль обновлён успешно")
-    # TODO разобраться с patch
+    # TODO do we need patch or no

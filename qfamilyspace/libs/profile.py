@@ -5,6 +5,9 @@ import requests
 
 
 class Profile:
+    """
+    Class for working with user profile
+    """
     def __init__(self, token):
         self.token = token
         self.user_id = None
@@ -54,7 +57,6 @@ class Profile:
             "Accept": "application/json",
             "Authorization": f"token {self.token}",
         }
-        payload = {}
 
         try:
             response = requests.patch(f"http://localhost:8000/user_api/profile/{self.user_id}/",
