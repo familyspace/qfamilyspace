@@ -7,7 +7,7 @@ from PyQt5 import QtWidgets
 
 from qfamilyspace.ui.controllers.main_controller import MainController
 from qfamilyspace.ui.views.main_view import MainView
-from qfamilyspace.ui.dialogs.auth_dialog import Auth
+from qfamilyspace.ui.dialogs.auth_dialog import AuthDialog
 
 # from PyQt5.QtCore import QFile, QTextStream
 # import qfamilyspace.ui.resources.breeze_resources
@@ -23,9 +23,7 @@ def _create_controller():
 def run():
     app = QtWidgets.QApplication(sys.argv)
 
-    auth = Auth("settings.ini")
-
-    controller = _create_controller()
+    auth_dialog = AuthDialog("settings.ini")
 
     # # set stylesheet
     # file = QFile(":/dark.qss")
@@ -38,10 +36,11 @@ def run():
     # app.setStyleSheet(style)
 
     # setup stylesheet
-    auth.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+    auth_dialog.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
-    if auth.exec_() == QtWidgets.QDialog.Accepted:
+    if auth_dialog.exec_() == QtWidgets.QDialog.Accepted:
+        controller = _create_controller()
+        app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
         controller.show()
         sys.exit(app.exec_())
 

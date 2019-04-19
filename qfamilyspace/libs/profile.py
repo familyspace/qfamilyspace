@@ -5,6 +5,9 @@ import requests
 
 
 class Profile:
+    """
+    Class for working with user profile
+    """
     def __init__(self, token):
         self.token = token
         self.user_id = None
@@ -48,13 +51,12 @@ class Profile:
             return response
         return None
 
-    def handle_patch_profile(self):
+    def handle_patch_profile(self, payload: dict):
 
         headers = {
             "Accept": "application/json",
             "Authorization": f"token {self.token}",
         }
-        payload = {}
 
         try:
             response = requests.patch(f"http://localhost:8000/user_api/profile/{self.user_id}/",
@@ -62,9 +64,5 @@ class Profile:
         except requests.exceptions.ConnectionError as e:
             print(f"ConnectionError: {e}")
         else:
-            # print(response.status_code)
-            # print(response.json())
-            # if "response" in response.json():
-            #     return response.json()["response"][0]
             return response
         return None

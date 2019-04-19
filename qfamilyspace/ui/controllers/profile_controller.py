@@ -16,9 +16,10 @@ class ProfileController(QtCore.QObject):
         self.profile = None
         self.token = ""
         self.get_token()  # Получаем токен из файла настроек
-        self.get_profile()
+        self.make_profile()
         self.show_profile()
-        self.view.save_profile_signal.connect(self.set_profile_data)
+        self.view.save_profile_signal.connect(self.put_profile_data)
+        # self.view.save_profile_signal.connect(self.patch_profile_data)
 
     def get_token(self):
         """Чтение настроек"""
@@ -26,7 +27,7 @@ class ProfileController(QtCore.QObject):
         self.token = self.settings.value("token")
         self.settings.endGroup()
 
-    def get_profile(self):
+    def make_profile(self):
         self.profile = Profile(self.token)
 
     def show_profile(self):
@@ -35,7 +36,15 @@ class ProfileController(QtCore.QObject):
     def get_profile_data(self):
         return self.profile.handle_get_profile()
 
-    def set_profile_data(self, profile_data):
+    def put_profile_data(self, profile_data):
         response = self.profile.handle_put_profile(profile_data)
         if response.status_code == 200:
-            print("Профиль сохранён успешно")
+            msg = "Профиль сохранён успешно"
+            # msg = "The profile is saved successfully"
+            print(msg)
+
+    # def patch_profile_data(self, profile_data):
+    #     response = self.profile.handle_patch_profile(profile_data)
+    #     if response.status_code == 200:
+    #         print("Профиль обновлён успешно")
+    # TODO do we need patch or no
