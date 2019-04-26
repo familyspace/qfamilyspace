@@ -36,7 +36,6 @@ class Ui_AboutDialog(object):
         self.verticalLayout_logo.setObjectName("verticalLayout_logo")
         self.label_logo = QtWidgets.QLabel(self.widget_logo)
         self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap("../../../../../../../Users/a.likhobabin/.designer/backup/logo.png"))
         self.label_logo.setScaledContents(True)
         self.label_logo.setObjectName("label_logo")
         self.verticalLayout_logo.addWidget(self.label_logo)
