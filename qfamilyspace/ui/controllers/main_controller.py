@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtCore
 
 from qfamilyspace.ui.controllers.profile_controller import ProfileController
+from qfamilyspace.ui.controllers.menu_controller import MenuController
 
 
 class MainController(QtCore.QObject):
@@ -18,10 +19,15 @@ class MainController(QtCore.QObject):
 
     def _init_controllers(self):
         self._init_profile()
+        self._init_menu_bar()
 
-    # def exit(self):
-    #     self.view.close()
-    #     sys.exit()
+    def exit(self):
+        self.view.close()
+        sys.exit()
+
+    def _init_menu_bar(self):
+        menu = self.view.menuBar()
+        self._menu_controller = MenuController(self, menu)
 
     def show(self):
         self.view.show()
