@@ -1,4 +1,4 @@
-# import hashlib
+# from qfamilyspace.libs.hash import hash_string
 import requests
 
 from PyQt5 import QtWidgets, QtCore
@@ -6,22 +6,15 @@ from PyQt5 import QtWidgets, QtCore
 from qfamilyspace.ui.dialogs.ui_auth_dialog import Ui_AuthDialog
 
 
-# def hash_string(string):
-#     """
-#     Return a SHA-256 hash of the given string
-#     """
-#     return hashlib.sha256(string.encode('utf-8')).hexdigest()
-
-
 class AuthDialog(QtWidgets.QDialog):
-    def __init__(self, iniFile, parent=None):
+    def __init__(self, ini_file, parent=None):
         super(AuthDialog, self).__init__(parent)
 
         self.ui = Ui_AuthDialog()
         self.ui.setupUi(self)
 
-        self.iniFile = iniFile
-        self.settings = QtCore.QSettings(iniFile, QtCore.QSettings.IniFormat)
+        self.iniFile = ini_file
+        self.settings = QtCore.QSettings(ini_file, QtCore.QSettings.IniFormat)
         self.settings.setIniCodec("utf-8")
 
         self.ui.lineEditPassword.setEchoMode(QtWidgets.QLineEdit.Password)
