@@ -2,12 +2,13 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
+from qfamilyspace.ui.views.left_panel_view import LeftPanelView
 from qfamilyspace.ui.views.left_view import LeftView
+from qfamilyspace.ui.views.rigth_panel_view import RigthPanelView
 from qfamilyspace.ui.views.tasks_view import TasksView
 
 
 class MainView(QtWidgets.QMainWindow):
-
     closeEventSignal = QtCore.pyqtSignal(QtGui.QCloseEvent)
 
     def __init__(self, parent=None):
@@ -26,13 +27,16 @@ class MainView(QtWidgets.QMainWindow):
         self.splitter = QtWidgets.QSplitter()
         self.splitter.setHandleWidth(1)
 
-        self.left_view = LeftView(self.splitter)
-        self.tasks_view = TasksView(self.splitter)
+        self.left_panel = LeftPanelView(self.splitter)
+        self.left_panel = RigthPanelView(self.splitter)
+
+        # self.left_view = LeftView(self.splitter)
+        # self.tasks_view = TasksView(self.splitter)
 
         self.setCentralWidget(self.splitter)
 
-        self.resize(800, 400)
-        self.splitter.setSizes([250, 550])
+        self.resize(870, 650)
+        self.splitter.setSizes([300, 550])
 
     def closeEvent(self, closeEvent):
         super(MainView, self).closeEvent(closeEvent)
