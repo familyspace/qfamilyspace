@@ -33,5 +33,6 @@ class MainController(QtCore.QObject):
         self.view.show()
 
     def _init_profile(self):
-        pass
+        # pass
         # self._profile_controller = ProfileController(self.view.tasks_view.profile_view, "settings.ini")
+        self._profile_controller = ProfileController(self.view.left_panel.user_base_actions, "settings.ini")

@@ -2,9 +2,9 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 
-from qfamilyspace.ui.views.left_panel_view import LeftPanelView
+from qfamilyspace.ui.views.left_panel import LeftPanelView
 from qfamilyspace.ui.views.left_view import LeftView
-from qfamilyspace.ui.views.rigth_panel_view import RigthPanelView
+from qfamilyspace.ui.views.rigth_panel import RigthPanelView
 from qfamilyspace.ui.views.tasks_view import TasksView
 
 
@@ -28,7 +28,7 @@ class MainView(QtWidgets.QMainWindow):
         self.splitter.setHandleWidth(1)
 
         self.left_panel = LeftPanelView(self.splitter)
-        self.left_panel = RigthPanelView(self.splitter)
+        self.rigth_panel = RigthPanelView(self.splitter)
 
         # self.left_view = LeftView(self.splitter)
         # self.tasks_view = TasksView(self.splitter)

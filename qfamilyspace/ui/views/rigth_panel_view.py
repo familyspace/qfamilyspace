@@ -1,25 +1,16 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore, uic
+from PyQt5.QtCore import pyqtSignal
 
-from qfamilyspace.ui.views.left_panel_widget import LeftPanelWidget
-from qfamilyspace.ui.views.profile_view import ProfileView
-from qfamilyspace.ui.views.rigth_panel_widget import RigthPanelWidget
+from qfamilyspace.ui.views.ui_rigth_panel import Ui_RigthPanel
 
 
-class RigthPanelView(QtWidgets.QWidget):
+class Tasks(QtWidgets.QWidget):
 
-    def __init__(self, parent):
-        QtWidgets.QWidget.__init__(self, parent)
-        self._initUI()
+    # save_profile_signal = pyqtSignal(dict)
 
-    def _initUI(self):
-        layout = QtWidgets.QVBoxLayout(self)
-        layout.setSpacing(10)
+    def __init__(self, parent=None):
+        super(Tasks, self).__init__(parent)
+        uic.loadUi('ui/views/ui_rigth_panel.ui', self)
+        # self.ui = Ui_RigthPanel()
+        # self.ui.setupUi(self)
 
-        self.rigth_panel_widget = RigthPanelWidget()
-
-        # offset = QtCore.QSettings().value("ui_margin_offset", -4)
-        # self.setContentsMargins(2 * offset, offset, offset, offset)
-
-        layout.addWidget(self.rigth_panel_widget)
-
-        self.setLayout(layout)
