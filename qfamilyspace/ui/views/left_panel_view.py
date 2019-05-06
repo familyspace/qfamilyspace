@@ -7,7 +7,7 @@ from qfamilyspace.ui.views.ui_profile_view import Ui_ProfileView
 
 class LeftPanel(QtWidgets.QWidget):
     save_profile_signal = pyqtSignal(dict)
-    # create_group_signal = pyqtSignal(dict)
+    create_group_signal = pyqtSignal(dict)
 
     def __init__(self, parent=None):
         super(LeftPanel, self).__init__(parent)
@@ -66,10 +66,10 @@ class LeftPanel(QtWidgets.QWidget):
             "title": self.New_Group_Title_lineEdit.text(),
             "description": self.New_Group_Description_textEdit.toPlainText(),
             "category": get_id_for_category_name(self.categories_list, self.New_Group_Category_comboBox.currentText()),
-            "is_public": self.New_Group_Is_Public_checkBox.checkState(),
+            "is_public": bool(self.New_Group_Is_Public_checkBox.checkState()),
         }
 
-        # self.create_group_signal.emit(group_data)
+        self.create_group_signal.emit(group_data)
 
     def fill_categories(self, categories):
         self.categories_list = categories

@@ -18,7 +18,7 @@ class GroupController(QtCore.QObject):
         self.get_token()  # Получаем токен из файла настроек
         self.groups = None
         self.make_groups()
-        # self.view.create_group_signal.connect(self.post_new_group)
+        self.view.create_group_signal.connect(self.post_new_group)
 
         # self.view.save_profile_signal.connect(self.patch_profile_data)
 

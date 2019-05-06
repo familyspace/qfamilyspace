@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtCore
 
 from qfamilyspace.ui.controllers.category_controller import CategoryController
+from qfamilyspace.ui.controllers.group_controller import GroupController
 from qfamilyspace.ui.controllers.profile_controller import ProfileController
 from qfamilyspace.ui.controllers.menu_controller import MenuController
 
@@ -37,4 +38,5 @@ class MainController(QtCore.QObject):
         # pass
         # self._profile_controller = ProfileController(self.view.tasks_view.profile_view, "settings.ini")
         self._profile_controller = ProfileController(self.view.left_panel.user_base_actions, "settings.ini")
-        self._profile_controller = CategoryController(self.view.left_panel.user_base_actions, "settings.ini")
+        self._category_controller = CategoryController(self.view.left_panel.user_base_actions, "settings.ini")
+        self._group_controller = GroupController(self.view.left_panel.user_base_actions, "settings.ini")
