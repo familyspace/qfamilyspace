@@ -6,15 +6,18 @@ from qfamilyspace.ui.views.ui_profile_view import Ui_ProfileView
 
 
 class LeftPanel(QtWidgets.QWidget):
-
     save_profile_signal = pyqtSignal(dict)
+    # create_group_signal = pyqtSignal(dict)
 
     def __init__(self, parent=None):
         super(LeftPanel, self).__init__(parent)
         uic.loadUi('ui/views/ui_left_panel.ui', self)
+        # Список категорий
+        self.categories_list = None
         #
         # self.ui = Ui_LeftPanel()
         # self.ui.setupUi(self)
+        self.Create_Group_pushButton.clicked.connect(self.create_new_group)
         self.pushButton_save_profile.clicked.connect(self.save_profile)
 
     def fill_profile(self, profile_data):
@@ -51,3 +54,25 @@ class LeftPanel(QtWidgets.QWidget):
         if password:
             profile_data["password"] = password
         self.save_profile_signal.emit(profile_data)
+
+    def create_new_group(self):
+        def get_id_for_category_name(categories_list, category_name):
+            for category in categories_list:
+                if category['name'] == category_name:
+                    return category['id']
+            return None
+
+        group_data = {
+            "title": self.New_Group_Title_lineEdit.text(),
+            "description": self.New_Group_Description_textEdit.toPlainText(),
+            "category": get_id_for_category_name(self.categories_list, self.New_Group_Category_comboBox.currentText()),
+            "is_public": self.New_Group_Is_Public_checkBox.checkState(),
+        }
+
+        # self.create_group_signal.emit(group_data)
+
+    def fill_categories(self, categories):
+        self.categories_list = categories
+        self.New_Group_Category_comboBox.clear()
+        for category in categories:
+            self.New_Group_Category_comboBox.addItem(category['name'])
