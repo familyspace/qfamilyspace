@@ -21,9 +21,7 @@ class CategoryController(QtCore.QObject):
         self.make_categories()
         self.show_categories()
         self.categories_list = self.get_categories()
-        # self.view.save_profile_signal.connect(self.put_profile_data)
 
-        # self.view.save_profile_signal.connect(self.patch_profile_data)
 
     def get_token(self):
         """Чтение настроек"""

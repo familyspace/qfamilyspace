@@ -20,8 +20,6 @@ class GroupController(QtCore.QObject):
         self.make_groups()
         self.view.create_group_signal.connect(self.post_new_group)
 
-        # self.view.save_profile_signal.connect(self.patch_profile_data)
-
     def get_token(self):
         """Чтение настроек"""
         self.settings.beginGroup("User")

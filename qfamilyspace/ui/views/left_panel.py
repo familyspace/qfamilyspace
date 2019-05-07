@@ -2,7 +2,6 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSignal
 
 from qfamilyspace.ui.views.left_panel_view import LeftPanel
-from qfamilyspace.ui.views.profile_view import ProfileView
 
 
 class LeftPanelView(QtWidgets.QWidget):
